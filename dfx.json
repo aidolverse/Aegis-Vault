@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "canisters": {
+    "aggregator": {
+      "type": "motoko",
+      "main": "src/aggregator/main.mo"
+    },
+    "uservault": {
+      "type": "motoko",
+      "main": "src/uservault/main.mo"
+    },
+    "token": {
+      "type": "motoko",
+      "main": "src/token/main.mo"
+    },
+    "governance": {
+      "type": "motoko",
+      "main": "src/governance/main.mo"
+    },
+    "frontend": {
+      "type": "assets",
+      "source": ["src/frontend/build"],
+      "dependencies": ["aggregator", "uservault"]
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:4943",
+      "type": "ephemeral"
+    },
+    "ic": {
+      "providers": ["https://ic0.app"],
+      "type": "persistent"
+    }
+  },
+  "output_env_file": ".env"
+}
